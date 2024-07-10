@@ -5,6 +5,10 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+// Rotas
+app.use('/produtos', require('./routes/routesProduct'));
+
+// Rota principal
 app.get('/', (req, res) => {
   res.send('Produtos API');
 });

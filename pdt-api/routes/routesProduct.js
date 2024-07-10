@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Products = require('../models/productModel');
+const Products = require('../productModel/productModel');
 
 // Mostrar todos os produtos
 router.get('/produtos', (req, res) => {
@@ -15,7 +15,7 @@ router.get('/produtos', (req, res) => {
   });
 });
 
-//Buscar por ID
+// Buscar por ID
 router.get('/produtos/:id', (req, res) => {
   Products.getById(req.params.id, (err, data) => {
     if (err) {
@@ -30,61 +30,70 @@ router.get('/produtos/:id', (req, res) => {
 
 // Criar um novo produto
 router.post('/produtos', (req, res) => {
-    const productNew = {
-        nome: req.body.nome,
-        descricao: req.body.descricao,
-        preco: req.body.preco,
-        data_criacao: new Date(),
-        };
-});
+  const productNew = {
+    nome: req.body.nome,
+    descricao: req.body.descricao,
+    preco: req.body.preco,
+    data_criacao: new Date(),
+  };
 
-// Vallidar se o produto foi criado
-if (!productNew.nome || !productNew.descricao || !productNew.preco) {
+  // Validar se o produto foi criado
+  if (!productNew.nome || !productNew.descricao || !productNew.preco) {
     res.status(400).send({
-        message: 'Os campos não podem estar vazios',
+      message: 'Os campos não podem estar vazios',
     });
     return;
-}
+  }
 
-Products.create(productNew, (err, data) => {
+  Products.create(productNew, (err, data) => {
     if (err) {
-        res.status(500).send({
-            message: err.message || 'Ocorreu um erro ao criar o produto',
-        });
+      res.status(500).send({
+        message: err.message || 'Ocorreu um erro ao criar o produto',
+      });
     } else {
-        res.send(data);
+      res.send(data);
     }
+  });
 });
 
 // Atualizar um produto
 router.put('/produtos/:id', (req, res) => {
-    const productUpdate = {
-        nome: req.body.nome,
-        descricao: req.body.descricao,
-        preco: req.body.preco,
-    };
-});
+  const productUpdate = {
+    nome: req.body.nome,
+    descricao: req.body.descricao,
+    preco: req.body.preco,
+  };
 
-// Validar se o produto foi atualizado
-if (!productUpdate.nome || !productUpdate.descricao || !productUpdate.preco) {
+  // Validar se o produto foi atualizado
+  if (!productUpdate.nome || !productUpdate.descricao || !productUpdate.preco) {
     res.status(400).send({
-        message: 'Os campos não podem estar vazios',
+      message: 'Os campos não podem estar vazios',
     });
     return;
-}
+  }
 
+  Products.update(req.params.id, productUpdate, (err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: err.message || 'Ocorreu um erro ao atualizar o produto',
+      });
+    } else {
+      res.send(data);
+    }
+  });
+});
 
 // Deletar um produto
 router.delete('/produtos/:id', (req, res) => {
-    Products.delete(req.params.id, (err, data) => {
-        if (err) {
-            res.status(500).send({
-                message: err.message || 'Ocorreu um erro ao deletar o produto',
-            });
-        } else {
-            res.send(data);
-        }
-    });
+  Products.delete(req.params.id, (err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: err.message || 'Ocorreu um erro ao deletar o produto',
+      });
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 module.exports = router;
