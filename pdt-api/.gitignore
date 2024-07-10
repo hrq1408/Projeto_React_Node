@@ -1,0 +1,6 @@
+# Arquivos de log
+logs/
+*.log
+
+# Arquivos de dependências
+node_modules/
