@@ -6,9 +6,9 @@ const port = 3000;
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Produtos API');
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Rodando na http://localhost:${port}`);
 });
