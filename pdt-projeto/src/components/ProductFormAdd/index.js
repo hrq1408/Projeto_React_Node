@@ -8,7 +8,7 @@ const ProductFormAdd = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:3001/api/produtos/", {
+    fetch("http://localhost:3001/produtos/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

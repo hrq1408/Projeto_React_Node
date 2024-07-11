@@ -6,9 +6,7 @@ const ProductEditForm = ({product, onUpdateProduct }) => {
     const [preco, setPreco] = useState(product?.preco || 0);
     
     const handleSubmit = (event) => {
-        event.preventDefault();
-
-    
+        event.preventDefault();    
         fetch(`http://localhost:3001/produtos/${product.id}`, {
         method: "PUT",
         headers: {

@@ -1,6 +1,8 @@
 const mysql = require('mysql2');
 const debug = require('debug')('app:mysql'); 
 
+
+
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
