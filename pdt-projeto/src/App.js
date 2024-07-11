@@ -11,8 +11,8 @@ function App() {
       </header>
       <main className="App-main">
         <ListProduct />
-        {/*<ProductFormAdd />
-        <ProductFormEdit />  */}
+        <ProductFormAdd />
+        {/*<ProductFormEdit />  */}
       </main>
       <footer className="App-footer">
 
