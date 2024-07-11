@@ -6,12 +6,7 @@ const port = 3001;
 app.use(bodyParser.json());
 
 // Rotas
-app.use('/produtos', require('./routes/routesProduct'));
-
-// Rota principal
-app.get('/', (req, res) => {
-  res.send('Produtos API');
-});
+app.use('/produtos', require('./routes/routesProduct.js'));
 
 app.listen(port, () => {
   console.log(`Rodando na http://localhost:${port}`);

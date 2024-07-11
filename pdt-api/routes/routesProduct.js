@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Products = require('../productModel/productModel');
+const Products = require('../models/productModel');
 
 // Mostrar todos os produtos
-router.get('/produtos', (req, res) => {
+router.get('/', (req, res) => {
   Products.getAll((err, data) => {
     if (err) {
       res.status(500).send({
@@ -16,8 +16,9 @@ router.get('/produtos', (req, res) => {
 });
 
 // Buscar por ID
-router.get('/produtos/:id', (req, res) => {
-  Products.getById(req.params.id, (err, data) => {
+router.get('/:id', (req, res) => {
+  const productId = req.params.id;
+  Products.getById(productId, (err, data) => {
     if (err) {
       res.status(500).send({
         message: err.message || 'Ocorreu um erro ao buscar o produto',
@@ -29,7 +30,7 @@ router.get('/produtos/:id', (req, res) => {
 });
 
 // Criar um novo produto
-router.post('/produtos', (req, res) => {
+router.post('/', (req, res) => {
   const productNew = {
     nome: req.body.nome,
     descricao: req.body.descricao,
@@ -57,7 +58,7 @@ router.post('/produtos', (req, res) => {
 });
 
 // Atualizar um produto
-router.put('/produtos/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const productUpdate = {
     nome: req.body.nome,
     descricao: req.body.descricao,
@@ -84,7 +85,7 @@ router.put('/produtos/:id', (req, res) => {
 });
 
 // Deletar um produto
-router.delete('/produtos/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   Products.delete(req.params.id, (err, data) => {
     if (err) {
       res.status(500).send({

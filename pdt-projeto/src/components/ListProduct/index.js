@@ -4,13 +4,13 @@ const ListProduct = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/produtos/")
+    fetch("http://localhost:3001/produtos/")
       .then((response) => response.json())
       .then((data) => setProducts(data));
   }, []);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3001/api/produtos/${id}`, {
+    fetch(`http://localhost:3001/produtos/${id}`, {
       method: "DELETE",
     }).then(() => {
       setProducts(products.filter((product) => product.id !== id));
