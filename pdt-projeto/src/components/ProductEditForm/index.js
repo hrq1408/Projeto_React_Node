@@ -44,8 +44,9 @@ const ProductEditForm = ({product, onUpdateProduct }) => {
             onChange={(event) => setPreco(parseFloat(event.target.value))}
             />
         </label>
-        <button type="submit">Salvar</button>
+        <button type="submit">Editar</button>
         </form>
     );
     }
+    
     export default ProductEditForm;
