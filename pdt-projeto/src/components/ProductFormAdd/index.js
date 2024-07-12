@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "./style.css";
 
 const ProductFormAdd = () => {
   const [nome, setNome] = useState("");
@@ -22,7 +23,7 @@ const ProductFormAdd = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="FormDados" onSubmit={handleSubmit}>
       <label>
         Nome:
         <input

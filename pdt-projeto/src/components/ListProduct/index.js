@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./style.css";
 
 const ListProduct = () => {
   const [products, setProducts] = useState([]);
@@ -65,7 +66,7 @@ const ListProduct = () => {
 
   return (
     <div>
-      <h1>Products</h1>
+      <h1>Produtos</h1>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -77,8 +78,8 @@ const ListProduct = () => {
       </ul>
 
       {editingProduct && (
-        <form onSubmit={handleUpdate}>
-          <h2>Edit Product</h2>
+        <form className="FormDadosEdit" onSubmit={handleUpdate}>
+          <h2>Editar Produto</h2>
           <label>
             Nome:
             <input

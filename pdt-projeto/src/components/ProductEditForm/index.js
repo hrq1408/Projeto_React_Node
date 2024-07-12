@@ -19,7 +19,7 @@ const ProductEditForm = ({product, onUpdateProduct }) => {
     };
     
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="FormDadosEdit" onSubmit={handleSubmit}>
         <label>
             Nome:
             <input
