@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Projeto React Node
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
 
-## Available Scripts
+Este projeto é uma aplicação web desenvolvida com React para o frontend e Node.js para o backend. A aplicação permite criar, listar, editar e excluir produtos. A API foi construída com Node.js e Express, enquanto o frontend foi construído com React e utiliza hooks para gerenciamento de estado.
 
-In the project directory, you can run:
+## Tecnologias Utilizadas
 
-### `npm start`
+- React
+- Node.js
+- Express
+- MySQL
+- CSS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Desafios Práticos
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Desafio 1: API com Node.js
 
-### `npm test`
+Descrição: Crie uma API RESTful simples usando Node.js e Express. A API deve permitir operações CRUD (Create, Read, Update, Delete) em uma entidade chamada "Produtos". Cada produto deve ter os seguintes campos: id, nome, descrição, preço e data de criação.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Requisitos:
+- Use o Express para criar as rotas.
+- Utilize um banco de dados (MySQL) para armazenar os dados.
+- Implemente validação de dados na criação e atualização de produtos.
+- Adicione tratamento de erros adequados.
 
-### `npm run build`
+### Desafio 2: Frontend com React.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Descrição: Crie uma aplicação frontend usando React.js que consuma a API criada no Desafio 1. A aplicação deve permitir que o usuário veja a lista de produtos, adicione um novo produto, atualize um produto existente e delete um produto.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Requisitos:
+- Utilize hooks do React para gerenciar o estado da aplicação.
+- Implemente formulários para adicionar e atualizar produtos.
+- Adicione feedback visual para o usuário (ex: loading spinners, mensagens de sucesso/erro).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Desafio 3: Integração e Deploy
 
-### `npm run eject`
+Descrição: Integre a aplicação frontend com a API backend e faça o deploy das duas partes (frontend e backend) usando um serviço de hospedagem gratuito (ex: Heroku para o backend e Vercel ou Netlify para o frontend).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Requisitos:
+- Configure o Git para versionamento do código. Crie um repositório no GitHub e faça commits regulares com mensagens claras.
+- Escreva um README.md no repositório explicando como configurar e rodar o projeto localmente.
+- Adicione instruções no README.md sobre como acessar a aplicação deployada.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Pré-requisitos
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+- [Node.js](https://nodejs.org/en/)
+- [Git](https://git-scm.com)
+- [MySQL](https://www.mysql.com/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Além disso, é bom ter um editor para trabalhar com o código, como [VSCode](https://code.visualstudio.com/).
 
-## Learn More
+## Instalação
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Backend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone o repositório:
+    git clone https://github.com/seu-usuario/seu-repositorio.git
+    
+2. Navegue até o diretório do backend:
+    cd pdt-api
+    
+3. Instale as dependências:
+    npm install
+    
+4. Configure o banco de dados MySQL:
+    - Crie um banco de dados chamado
+    - Configure as credenciais do banco de dados no arquivo `config.js` ou similar.
 
-### Code Splitting
+5. Inicie o servidor:
+    npm start
+    
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Frontend
 
-### Analyzing the Bundle Size
+1. Navegue até o diretório do frontend:
+    cd frontend
+  
+2. Instale as dependências:
+    npm install
+ 
+3. Inicie a aplicação:
+    npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Uso
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Acesse a aplicação no navegador:    
+    http://localhost:3000
+    ```
+2. Utilize a interface para adicionar, listar, editar e excluir produtos.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contribuição
 
-### Deployment
+1. Faça um fork do projeto
+2. Crie uma branch para a sua feature (`git checkout -b feature/nova-feature`)
+3. Faça commit das suas alterações (`git commit -m 'Adiciona nova feature'`)
+4. Faça push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Deploy
 
-### `npm run build` fails to minify
+### Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+

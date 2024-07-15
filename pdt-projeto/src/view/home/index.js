@@ -50,7 +50,7 @@ const Home = () => {
       <div className="field">
         <div className="control">
           <button onClick={toggleList} className="button is-dark" style={{ marginTop: '10px' }}>
-            {showList ? "Hide List" : "Listar Lista"}
+            {showList ? "Esconder lista" : "Listar Lista"}
           </button>
         </div>
       </div>
