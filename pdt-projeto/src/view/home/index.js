@@ -9,21 +9,27 @@ const Home = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [showList, setShowList] = useState(false);
 
-  useEffect(() => {
+  const fetchProducts = () => {
     fetch("http://localhost:3001/produtos/")
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Erro na requisição fetch:", error));
+  };
+
+  useEffect(() => {
+    fetchProducts();
   }, []);
 
   const handleAddProduct = (newProduct) => {
     setProducts([...products, newProduct]);
+    fetchProducts(); // Atualiza produtos
   };
 
   const handleUpdateProduct = (updatedProduct) => {
     setProducts(products.map((product) =>
       product.id === updatedProduct.id ? updatedProduct : product
     ));
+    fetchProducts();
     setEditingProduct(null);
   };
 

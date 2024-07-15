@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./style.css";
 
-const ProductFormAdd = () => {
+const ProductFormAdd = ({ onAddProduct }) => {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [preco, setPreco] = useState(0);
@@ -14,11 +14,14 @@ const ProductFormAdd = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({nome, descricao, preco}),
-    }).then(() => {
-      setNome("");
-      setDescricao("");
-      setPreco(0);
+      body: JSON.stringify({ nome, descricao, preco }),
+    })
+      .then((response) => response.json())
+      .then((newProduct) => {
+        onAddProduct(newProduct);
+        setNome("");
+        setDescricao("");
+        setPreco(0);
     });
   };
 

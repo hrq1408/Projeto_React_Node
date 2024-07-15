@@ -12,10 +12,12 @@ const ProductEditForm = ({product, onUpdateProduct }) => {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({nome, descricao, preco}),
-        }).then(() => {
-        onUpdateProduct({id: product.id, nome, descricao, preco});
-        });
+        body: JSON.stringify({ nome, descricao, preco }),
+    })
+      .then((response) => response.json())
+      .then((updatedProduct) => {
+        onUpdateProduct(updatedProduct);
+      });
     };
     
     return (
