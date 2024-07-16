@@ -3,38 +3,29 @@ import React, { useState } from "react";
 const ProductFormAdd = ({ onProductAdded }) => {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
-  const [preco, setPreco] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [preco, setPreco] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLoading(true);
+
+    const parsedPreco = parseFloat(preco);
 
     fetch("http://localhost:3001/produtos/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ nome, descricao, preco }),
+      body: JSON.stringify({ nome, descricao, preco: parsedPreco }),
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Erro na requisição: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        onProductAdded(data);
+      .then(response => response.json())
+      .then((newProduct) => {
+        onProductAdded(newProduct);
         setNome("");
         setDescricao("");
-        setPreco(0);
-        setLoading(false);
-        setError(null);
+        setPreco("");
       })
       .catch((error) => {
-        setError("Erro ao adicionar produto");
-        setLoading(false);
+        console.error("Erro ao adicionar produto:", error);
       });
   };
 
@@ -61,13 +52,10 @@ const ProductFormAdd = ({ onProductAdded }) => {
         <input
           type="number"
           value={preco}
-          onChange={(event) => setPreco(parseFloat(event.target.value))}
+          onChange={(event) => setPreco(event.target.value)}
         />
       </label>
-      <button type="submit" disabled={loading}>
-        {loading ? "Adicionando..." : "Adicionar"}
-      </button>
-      {error && <p>{error}</p>}
+      <button type="submit">Adicionar</button>
     </form>
   );
 };

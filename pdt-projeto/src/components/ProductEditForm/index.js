@@ -21,7 +21,6 @@ const ProductEditForm = ({ product, onUpdateProduct }) => {
         throw new Error(`Erro ao editar produto: ${response.status}`);
       }
 
-      // Atualiza o produto localmente após a edição
       onUpdateProduct({ id: product.id, nome, descricao, preco });
     } catch (error) {
       console.error("Erro ao editar produto:", error);
