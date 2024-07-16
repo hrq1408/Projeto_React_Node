@@ -1,13 +1,15 @@
-import React, {useState} from "react";
-import "./style.css";
+import React, { useState } from "react";
 
-const ProductFormAdd = ({ onAddProduct }) => {
+const ProductFormAdd = ({ onProductAdded }) => {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [preco, setPreco] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true);
 
     fetch("http://localhost:3001/produtos/", {
       method: "POST",
@@ -16,17 +18,28 @@ const ProductFormAdd = ({ onAddProduct }) => {
       },
       body: JSON.stringify({ nome, descricao, preco }),
     })
-      .then((response) => response.json())
-      .then((newProduct) => {
-        onAddProduct(newProduct);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Erro na requisição: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        onProductAdded(data);
         setNome("");
         setDescricao("");
         setPreco(0);
-    });
+        setLoading(false);
+        setError(null);
+      })
+      .catch((error) => {
+        setError("Erro ao adicionar produto");
+        setLoading(false);
+      });
   };
 
   return (
-    <form className="FormDados" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <label>
         Nome:
         <input
@@ -51,8 +64,12 @@ const ProductFormAdd = ({ onAddProduct }) => {
           onChange={(event) => setPreco(parseFloat(event.target.value))}
         />
       </label>
-      <button type="submit">Adicionar</button>
+      <button type="submit" disabled={loading}>
+        {loading ? "Adicionando..." : "Adicionar"}
+      </button>
+      {error && <p>{error}</p>}
     </form>
   );
-}
+};
+
 export default ProductFormAdd;
