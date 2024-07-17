@@ -56,7 +56,7 @@ Além disso, é bom ter um editor para trabalhar com o código, como [VSCode](ht
 ### Backend
 
 1. Clone o repositório:
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+    git clone https://github.com/hrq1408/Projeto_React_Node/tree/main/pdt-api
     
 2. Navegue até o diretório do backend:
     cd pdt-api
@@ -65,7 +65,7 @@ Além disso, é bom ter um editor para trabalhar com o código, como [VSCode](ht
     npm install
     
 4. Configure o banco de dados MySQL:
-    - Crie um banco de dados chamado
+    - Crie um banco de dados chamado projeto_prod
     - Configure as credenciais do banco de dados no arquivo `config.js` ou similar.
 
 5. Inicie o servidor:
@@ -74,13 +74,16 @@ Além disso, é bom ter um editor para trabalhar com o código, como [VSCode](ht
 
 ### Frontend
 
-1. Navegue até o diretório do frontend:
+1. Clone o repositório:
+    git clone https://github.com/hrq1408/Projeto_React_Node/tree/main/pdt-projeto
+
+2. Navegue até o diretório do frontend:
     cd frontend
   
-2. Instale as dependências:
+3. Instale as dependências:
     npm install
  
-3. Inicie a aplicação:
+4. Inicie a aplicação:
     npm start
 
 
@@ -101,6 +104,8 @@ Além disso, é bom ter um editor para trabalhar com o código, como [VSCode](ht
 5. Abra um Pull Request
 
 ## Deploy
+
+Não fiz o deploy pois os sistemas nao sao mais gratuitos!
 
 ### Backend
 
